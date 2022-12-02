@@ -1,0 +1,97 @@
+@media only screen and (max-width: 768px) {
+    #title-card {
+        width: 100%;
+        height: 100vh;
+        background-image: url("../images/background.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translateY(200%);
+        opacity: 0;
+        animation: titlecard cubic-bezier(0.3, 0.6, 0.5, 1.1) 5s;
+    }
+    
+    #loading {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translateY(200%);
+        opacity: 0;
+        animation: titlecard cubic-bezier(0.3, 0.6, 0.5, 1.1) 5s;
+        display: flex;
+        flex-direction: column;
+        color: #fff;
+        opacity: 0.98;
+    }
+    
+    /* loading */
+    
+    .loading-morning-title {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 10vh;
+        font-size: 4vw;
+    }
+    
+    .loading-main-title {
+        width: 100%;
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        font-size: 10vw;
+    }
+
+    .loading-main-title > h2 {
+        position: relative;
+    }
+    
+    .loading-main-title > h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: #fff;
+        animation: loading-bar cubic-bezier(0.3, 0.6, 0.5, 1.1) 3s;
+    }
+
+    @keyframes loading-bar {
+        0% {
+            width: 0%;
+        }
+        25% {
+            width: 0%;
+        }
+        100% {
+            width: 100%;
+        }
+    }
+    
+    @keyframes titlecard {
+        0% {
+            transform: translateY(200%);
+            opacity: 0;
+        }
+        5% {
+            transform: translateY(0%);
+            opacity: 0.97;
+        }
+        75% {
+            transform: translateY(0%);
+            opacity: 0.97;
+        }
+        100% {
+            transform: translateY(200%);
+            opacity: 0;
+        }
+    }
+}

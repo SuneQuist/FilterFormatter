@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.typekit.net/kru8xel.css">
+    <link rel="stylesheet" href="./css/desktop.css"><link>
+    <link rel="stylesheet" href="./css/mobile.css"><link>
+    <link rel="stylesheet" href="./css/global.css"><link>
+    <title>FilterFormatter</title>
+</head>
+<body>
+    <div id="root">
+        <article id="main-container">
+            <!-- Container for form input fields -->
+            <section class="container-form">
+                <!-- <header><h2 class="heading heading-list-logo">Filter Modifier</h2></header> -->
+                <article class="heading form-wrapper">
+                    <section class="list-of-mode">
+                        <span><h3>Mode:</h3><p class="current-mode">None</p></span>
+                        <span><h3>(if) Currently Editing:</h3><p class="current-title">None</p></span>
+                    </section>
+
+                <!--{
+                    "filterName": "Hax",
+                    "wordsContains": [
+                        "Hax"
+                    ],
+                    "wordsContainsNot": [],
+                    "playSound": true,
+                    "soundPath": "entity.wolf.howl",
+                    "highlightMessage": true,
+                    "highlightColorR": 252,
+                    "highlightColorG": 51,
+                    "highlightColorB": 50,
+                    "hideMessage": false,
+                    "displayInSecondChat": false,
+                    "filterTooltips": false,
+                    "room": "Global"
+                },-->
+
+                    <form class="form-content">
+                        <section class="form-content-wrapper">
+                            <fieldset class="input-text">
+                                <label for="filterName">Name</label>
+                                <input type="text" placeholder="Name" class="filterName" onkeyup="node.filterNameFunc(this)" />
+                            </fieldset>
+                            <fieldset class="input-text">
+                                <label for="wordsContains">Look for these Words</label>
+                                <input type="text" placeholder="hack, client, (seperate with comma)" class="wordsContains" onkeyup="node.wordsContainsFunc(this)" />
+                            </fieldset>
+                            <fieldset class="input-text">
+                                <label for="wordContainsNot">Ignore these Words</label>
+                                <input type="text" placeholder="hello, hi, (seperate with comma)" class="wordsContainsNot" onkeyup="node.ignoreWordsContainsFunc(this)" />
+                            </fieldset>
+                            <fieldset class="input-checkbox">
+                                <input type="checkbox" class="playSound" onclick="node.playSoundFunc(this)" />
+                                <label for="playSound">Enable Sound</label>
+                            </fieldset>
+                            <fieldset class="input-text">
+                                <label for="soundPath">Sound (Minecraft IDs)</label>
+                                <input type="text" placeholder="Sound (Minecraft IDs)" class="soundPath" onkeyup="node.soundPathFunc(this)" />
+                            </fieldset>
+                            <fieldset class="input-checkbox">
+                                <input type="checkbox" class="highlightMessage" onclick="node.highlightMessageFunc(this)"  />
+                                <label for="highlightMessae">Enable Message Highlight</label>
+                            </fieldset>
+                            <fieldset class="input-color">
+                                <input type="color" oninput="node.colorFunc(this)" class="color-field" />
+                                <input type="text" placeholder="#C04C3C" oninput="node.colorInputFunc(this)" class="textColorField" />
+                            </fieldset>
+                            <fieldset class="input-checkbox">
+                                <input type="checkbox" class="hideMessage" onclick="node.hideMessageFunc(this)"  />
+                                <label for="hideMessage">Hide Meesage</label>
+                            </fieldset>
+                            <fieldset class="input-checkbox">
+                                <input type="checkbox" class="displayInSecondChat" onclick="node.displayInSecondChatFunc(this)" />
+                                <label for="displayInSecondChat">Display message in second chat tab</label>
+                            </fieldset>
+                            <fieldset class="input-checkbox">
+                                <input type="checkbox" class="filterToolTips" onclick="node.filterTooltipsFunc(this)" />
+                                <label for="filterToolTips">Enable Tool Tips</label>
+                            </fieldset>
+                            <fieldset class="input-text">
+                                <label for="room">Room</label>
+                                <input type="text" placeholder="Room" class="room" onkeyup="node.roomFunc(this)" />
+                            </fieldset>
+                        </section>
+                        <section class="form-content-buttons">
+                            <div class="form-content-create"><button class="form-content-create-button">Switch to Create mode</button></div>
+                            <div class="form-content-save"><button class="form-content-save-button">save</button></div>
+                        </section>
+                    </form>
+                </article>
+            </section>
+
+            <!-- Container for list of filters -->
+            <section class="container-data">
+                <header class="heading heading-list-download"><button>Download File</button></header>
+                <article class="list-container">
+                    <section class="filter-wrapper"></section>
+                </article>
+            </section>
+        </article>
+    </div>
+    <div id="title-card"></div>
+    <div id="loading">
+        <h2 class="loading-morning-title">Good F*cking Morning</h2>
+        <div class="loading-main-title">
+            <h2>Loading</h2>
+        </div>
+    </div>
+    <script src="./js/inputs.js" defer></script>
+    <script src="./js/app.js" defer></script>
+</body>
+</html>
