@@ -15,7 +15,7 @@ const node = new CreateNodeFromInputs();
 
     if (!format) {
         try {
-            const req = await fetch("../filters.json");
+            const req = await fetch("filters.json");
             const res = await req.json();
             let filters = Array.from(res?.filters);
             createNodeList(filters);
