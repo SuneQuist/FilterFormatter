@@ -37,6 +37,8 @@ class CreateNodeFromInputs {
     }
 
     init() {
+        // Updating fields
+
         document.querySelector(".form-content .filterName").value = this.filterName;
         document.querySelector(".form-content .wordsContains").value = this.wordsContains.join(", ");
         document.querySelector(".form-content .wordsContainsNot").value = this.wordsContainsNot.join(", ");
@@ -49,6 +51,8 @@ class CreateNodeFromInputs {
         document.querySelector(".form-content .displayInSecondChat").checked = this.displayInSecondChat;
         document.querySelector(".form-content .filterToolTips").checked = this.filterTooltips;
         document.querySelector(".form-content .room").value = this.room;
+
+        // Mode Switching
 
         const switchModes = document.querySelector(".form-content-create-button");
         const saveButton = document.querySelector(".form-content-save-button");
@@ -69,6 +73,8 @@ class CreateNodeFromInputs {
             saveButton.innerHTML = "save edit";
         };
     }
+
+    // Update different input fields
     
     filterNameFunc(self) {
         this.filterName = self.value;
@@ -141,6 +147,8 @@ class CreateNodeFromInputs {
         if (self.value !== "") { this.room = self.value };
     }
 
+    // Add or edit filter array
+
     updateFilter() {
         const node = this.getNode();
 
@@ -152,6 +160,8 @@ class CreateNodeFromInputs {
             this.filter.push(node);
         }
     }
+
+    // Update specific or all fitlers without resetting by inisiating.
 
     update({filterName = this.filterName,
     wordsContains = this.wordsContains,
@@ -191,6 +201,24 @@ class CreateNodeFromInputs {
         this.init();
     }
 
+    deleteNode(index) {
+        if (this.filter) {
+            const filteredOut = this.filter.filter((key, idx) => { return idx !== index });
+
+            if (Array.isArray(filteredOut) && filteredOut.length > 0) {
+                this.filter = filteredOut;
+            }
+        }
+    }
+
+    saveData() {
+        if (this.filter) {
+            localStorage.setItem("filterFormatterData", JSON.stringify({filters: this.filter}));
+        }
+    }
+
+    // Returns all filters
+
     getNode() {
         this.newNode = {
             filterName: this.filterName,
@@ -206,10 +234,24 @@ class CreateNodeFromInputs {
             displayInSecondChat: this.displayInSecondChat,
             filterTooltips: this.filterTooltips,
             room: this.room,
-            filter: this.filter,
-            index: this.index
+            createMode: this.createMode
         }
 
         return this.newNode;
+    }
+
+    createJSONFile() {
+        const format = localStorage.getItem("filterFormatterData");
+
+        const blob = new Blob([JSON.stringify(this.filter ? {filters: this.filter} : format)], {type:"application/json"});
+        const href = URL.createObjectURL(blob);
+        
+        const a = Object.assign(document.createElement("a"), {href, style:"display:none", download:"filters.json", textContent: "filters.json"});
+        
+        document.body.appendChild(a);
+        
+        a.click();
+        URL.revokeObjectURL(href);
+        a.remove();
     }
 }
