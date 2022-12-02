@@ -270,6 +270,38 @@
         border-top: 2px solid #fff;
     }
 
+    .input-file {
+        position: relative;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .input-file > label {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: visible;
+        cursor: pointer;
+        background-color: #C04C3C;
+        border-bottom: 2px solid #fff;
+        color: #fff;
+        padding: .5rem 1rem;
+        font-weight: 700;
+        pointer-events: none;
+        user-select: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .upload-button {
+        opacity: 0;
+        width: 100%;
+        cursor: pointer;
+    }
+
     #title-card {
         width: 100%;
         height: 100vh;

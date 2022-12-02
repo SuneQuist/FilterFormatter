@@ -2,6 +2,7 @@ const filterWrapper = document.querySelector(".filter-wrapper");
 const saveButton = document.querySelector(".form-content-save-button");
 const switchModes = document.querySelector(".form-content-create-button");
 const downloadButton = document.querySelector(".download-button");
+const uploadButton = document.querySelector(".upload-button");
 
 const node = new CreateNodeFromInputs();
 
@@ -132,3 +133,30 @@ downloadButton.addEventListener("click", (e) => {
     
     node.createJSONFile();
 })
+
+uploadButton.addEventListener("change", async (e) => {
+    e.preventDefault();
+
+    const files = uploadButton.files;
+
+    let res = [];
+
+    for (let file of files) {
+        res = await read(file);
+    }
+
+    if (res?.filters && Array.isArray(res?.filters) && res?.filters.length > 0) {
+        const fieldWrapper = document.querySelector(".filter-wrapper");
+        node.update({filter: res.filters});
+        node.saveData();
+        const format = localStorage.getItem("filterFormatterData");
+    
+        fieldWrapper.innerHTML = "";
+        createNodeList(JSON.parse(format)?.filters);
+    }
+}, false);
+
+async function read(file) {
+    return await new Response(file).json();
+}
+  

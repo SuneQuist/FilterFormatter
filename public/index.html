@@ -97,7 +97,13 @@
 
             <!-- Container for list of filters -->
             <section class="container-data">
-                <header class="heading heading-list-download"><button class="download-button">Download File</button></header>
+                <header class="heading heading-list-download">
+                    <fieldset class="input-file">
+                        <label for="jsonDoc">Upload JSON File</label>
+                        <input type="file" name="jsonDoc" class="upload-button" />
+                    </fieldset>
+                    <button class="download-button">Download File</button>
+                </header>
                 <article class="list-container">
                     <section class="filter-wrapper"></section>
                 </article>
